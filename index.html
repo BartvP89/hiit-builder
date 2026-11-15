@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>HIIT Builder</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="HIIT Builder">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <h1>HIIT Builder</h1>
+    <p>Pick your modules, set the clock, go.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel" id="plan" aria-labelledby="planTitle">
+      <div class="panel-head">
+        <h2 id="planTitle">Your workout</h2>
+        <span class="muted" id="planSummary"></span>
+      </div>
+      <ol id="planList" class="plan-list"></ol>
+      <p id="planEmpty" class="empty">No modules yet. Add some from the library, or fill the workout at random.</p>
+
+      <div class="row random-row">
+        <div class="field">
+          <span class="label">Number of modules</span>
+          <div class="stepper" data-key="count"></div>
+        </div>
+        <button class="btn" id="fillBtn" type="button">Fill at random</button>
+        <button class="btn ghost" id="clearBtn" type="button">Clear</button>
+      </div>
+
+      <h2 class="sub">Timing</h2>
+      <div class="fields">
+        <div class="field">
+          <span class="label">Rounds</span>
+          <div class="stepper" data-key="rounds"></div>
+        </div>
+        <div class="field rounds-only">
+          <span class="label">Break between rounds</span>
+          <div class="stepper" data-key="roundBrk"></div>
+        </div>
+        <span class="hint wide">Each round runs through all your modules again, starting from module 1.</span>
+        <div class="field wide">
+          <span class="label">Minutes per module</span>
+          <div class="stepper" data-key="defMin"></div>
+          <span class="hint">Sets every module. Fine-tune each one in the list above.</span>
+        </div>
+        <div class="field wide">
+          <span class="label">Style</span>
+          <div class="segmented" id="modeSeg" role="group" aria-label="Module style">
+            <button type="button" data-mode="interval">Work / rest intervals</button>
+            <button type="button" data-mode="continuous">Continuous</button>
+          </div>
+        </div>
+        <div class="field interval-only">
+          <span class="label">Work</span>
+          <div class="stepper" data-key="work"></div>
+        </div>
+        <div class="field interval-only">
+          <span class="label">Rest</span>
+          <div class="stepper" data-key="rest"></div>
+        </div>
+        <div class="field wide">
+          <span class="label">Break between modules</span>
+          <div class="stepper" data-key="brk"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="library" aria-labelledby="libTitle">
+      <div class="panel-head">
+        <h2 id="libTitle">Module library</h2>
+        <span class="muted" id="libCount"></span>
+      </div>
+      <div class="chips" id="filters" role="group" aria-label="Filter by equipment"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+  </main>
+
+  <footer class="startbar">
+    <div class="total">
+      <strong id="totalTime">0:00</strong>
+      <span class="muted" id="totalMeta"></span>
+    </div>
+    <button class="btn primary big" id="startBtn" type="button">Start workout</button>
+  </footer>
+
+  <dialog id="detail" class="detail"></dialog>
+  <div id="player" class="player" hidden></div>
+
+  <script src="exercises.js"></script>
+  <script src="figure.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
